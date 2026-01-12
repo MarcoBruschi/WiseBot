@@ -44,12 +44,27 @@ app.get("/topics", async (req, res) => {
   }
 });
 
+app.get("/topics/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!id) res.status(404).json({ error: "Um id deve ser informado " });
+  try {
+    const topicFind = await Topic.findById(id);
+    if (!topicFind) {
+      res.status(404).json({ error: `Tópico inexistente` });
+      return;
+    }
+    res.status(200).json({ success: `Sucesso ao consultar tópico`, data: topicFind });
+  } catch (error) {
+    res.status(500).json({ error: `Falha ao consultar tópico - ${error}` });
+  }
+});
+
 app.delete("/topics/:id", async (req, res) => {
   const id = req.params.id;
-  if (!id) res.status(404).json({ error: "Um id deve ser informado "});
+  if (!id) res.status(404).json({ error: "Um id deve ser informado " });
   try {
     await Topic.findByIdAndDelete(id);
-    res.status(200).json({ success: "Tópico deletado com sucesso "});
+    res.status(200).json({ success: "Tópico deletado com sucesso " });
   } catch (error) {
     res.status(500).json({ error: `Falha ao deletar tópico - ${error}` });
   }
