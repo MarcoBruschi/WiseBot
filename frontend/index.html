@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <div class="api-area"><input type="text" id="api-input" placeholder="Insira sua chave do Gemini"></div>
+  <div class="main-title">WiseBot</div>
+  <div class="main-content">
+    <div class="main-inputs">
+      <textarea id="topic-input" placeholder="Escreva sobre o que você quer aprender"></textarea>
+      <button id="submit-btn">O</button>
+    </div>
+    <div class="main-cards-section"></div>
+  </div>
+
+  <div id="loading-modal" class="modal">
+    <div class="modal-content">
+      <div class="spinner"></div>
+      <p>Pensando sobre seu tópico...</p>
+    </div>
+  </div>
+
+  <div id="error-modal" class="modal-error">
+    <div class="modal-content-error">
+      <p>Erro</p>
+      <p class="error-message"></p>
+    </div>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
